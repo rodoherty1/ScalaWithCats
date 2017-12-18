@@ -33,18 +33,18 @@ object Printable {
 
 object PrintableSyntax {
   implicit class PrintableOps[A] (a: A) {
-    def format[A](implicit p: Printable[A]): String = {
+    def format(implicit p: Printable[A]): String = {
       p.format(a)
     }
 
-    def print[A](implicit p: Printable[A]): Unit = {
+    def print(implicit p: Printable[A]): Unit = {
       println(a.format)
     }
   }
 }
 
-object MyApp extends App {
+object PrintableApp extends App {
   import PrintableInstances.catPrintable
 
-  Printable.format[Cat](Cat("Holly", 3, "Blonde"))
+  println(Printable.format[Cat](Cat("Holly", 3, "Blonde")))
 }
